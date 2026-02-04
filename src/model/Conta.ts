@@ -1,18 +1,13 @@
 import { colors } from '../util/Colors';
+
 export class Conta{
     
-    // Atributo da Classe
-    // todo atributo privado , colocamos underline _ na frente dele
     private _numero: number;
     private _agencia: number;
     private _titular: string;
     private _tipo: number;
     private _saldo: number;
 
-    // metodo construtor e get - 1 pra cada atributo. teremos 5 de cada
-    // metodo construtor : ctrl + shift + P e pesquisar por "Typescript Constructor"
-
-    // Método Construtor
 	constructor(numero: number, agencia: number, titular: string, tipo: number, saldo: number) {
 		this._numero = numero;
 		this._agencia = agencia;
@@ -21,10 +16,6 @@ export class Conta{
 		this._saldo = saldo;
 	}
 
-    // Typescript Generate ALL Getter and Setter
-    // JS Docs (os comentários de documentação acima do código. se eu n for gerar a documentação, deletar)
-    
-    // Métodos Get e Set
 	public get numero(): number {
 		return this._numero;
 	}
@@ -73,43 +64,31 @@ export class Conta{
 	public set saldo(value: number) {
 		this._saldo = value;
 	}
-    
-    // Métodos Auxiliares
 
     public sacar(valor: number): boolean {
         if(valor <= 0){
             console.log(colors.fg.red, "O valor deve ser positivo", colors.reset);
         return false;
 }
-if(valor > this._saldo){
-    console.log(colors.fg.red, "Saldo Insuficiente!", colors.reset);
-    return false;
-}
-        this._saldo -= valor;
-        return true;
-        
-    }
-    public depositar(valor: number): boolean {
-        if(valor <= 0){
-            console.log(colors.fg.red, "O valor deve ser positivo", colors.reset);
-            return false;
-        }
-
-        this._saldo += valor;
-        return true;
-
         if(valor > this._saldo){
             console.log(colors.fg.red, "Saldo Insuficiente!", colors.reset);
-            return true;
+            return false;
         }
-        this._saldo += valor;
-        return true;
-                
+                this._saldo -= valor;
+                return true;
+        
     }
+    public depositar(valor: number): void {
+        if(valor <= 0){
+            console.log(colors.fg.red, "O valor deve ser positivo", colors.reset);
 
-    // sem precisarmos fazer muitos consoles.log
+        }else {
+            this._saldo += valor;
+        }
 
-    // Aqui vem as opções de conferencia de saque (se deu certo,) para fazer o saque
+    
+            
+    }
 
     public visualizar(): void {
 

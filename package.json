@@ -11,9 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "@types/node": "^25.2.0",
+    "iconv-lite": "^0.7.2",
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
+    "@types/iconv-lite": "^0.0.1",
     "@types/readline-sync": "^1.4.8"
   }
 }
