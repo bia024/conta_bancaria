@@ -85,7 +85,7 @@ ${"*".repeat(70)}
 export function sobre(): void {
     console.log("\n" + "*".repeat(70));
     console.log("Projeto Desenvolvido por: Bianca Caetano dos Reis - beahreis4@gmail.com");
-    console.log("github.com/bia024 - www.linkedin.com/in/bia-caetano");
+    console.log("https://github.com/bia024 - https://www.linkedin.com/in/bia-caetano/");
     console.log("*".repeat(70));
 }
 
