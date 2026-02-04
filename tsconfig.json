@@ -1,0 +1,111 @@
+{
+  "compilerOptions": {
+    /* Visite https://aka.ms/tsconfig para ler mais sobre este arquivo */
+
+    /* Projetos */
+    // "incremental": true,                              /* Salva arquivos .tsbuildinfo para permitir compilação incremental de projetos. */
+    // "composite": true,                                /* Habilita restrições para permitir que um projeto TypeScript seja usado com referências de projeto. */
+    // "tsBuildInfoFile": "./.tsbuildinfo",              /* Especifica o caminho do arquivo incremental .tsbuildinfo. */
+    // "disableSourceOfProjectReferenceRedirect": true,  /* Desativa a preferência por arquivos fonte em vez de arquivos de declaração ao referenciar projetos compostos. */
+    // "disableSolutionSearching": true,                 /* Remove o projeto da verificação de referências entre múltiplos projetos ao editar. */
+    // "disableReferencedProjectLoad": true,             /* Reduz o número de projetos carregados automaticamente pelo TypeScript. */
+
+    /* Linguagem e Ambiente */
+    "target": "es2020",                                  /* Define a versão do JavaScript gerado e inclui bibliotecas compatíveis. */
+    // "lib": [],                                        /* Especifica um conjunto de arquivos de declaração que descrevem o ambiente de execução. */
+    // "jsx": "preserve",                                /* Define como o código JSX será gerado. */
+    // "experimentalDecorators": true,                   /* Habilita suporte experimental para decorators legados. */
+    // "emitDecoratorMetadata": true,                    /* Emite metadados de tipo para declarações decoradas. */
+    // "jsxFactory": "",                                 /* Define a função factory para JSX, ex: 'React.createElement' ou 'h'. */
+    // "jsxFragmentFactory": "",                         /* Define a referência para fragmentos JSX. */
+    // "jsxImportSource": "",                            /* Define o módulo usado para importar funções JSX. */
+    // "reactNamespace": "",                             /* Define o objeto invocado para 'createElement' ao usar React JSX. */
+    // "noLib": true,                                    /* Desativa a inclusão de bibliotecas padrão, incluindo lib.d.ts. */
+    // "useDefineForClassFields": true,                  /* Emite campos de classe compatíveis com o padrão ECMAScript. */
+    // "moduleDetection": "auto",                        /* Controla o método para detectar arquivos JS como módulos. */
+
+    /* Módulos */
+    "module": "commonjs",                                /* Define o tipo de módulo gerado. */
+    // "rootDir": "./",                                  /* Define a pasta raiz dos arquivos de origem. */
+    // "moduleResolution": "node10",                     /* Define como o TypeScript resolve imports de módulos. */
+    // "baseUrl": "./",                                  /* Define o diretório base para resolver imports não relativos. */
+    // "paths": {},                                      /* Define atalhos para remapeamento de imports. */
+    // "rootDirs": [],                                   /* Permite tratar múltiplas pastas como uma só ao resolver módulos. */
+    // "typeRoots": [],                                  /* Define pastas que atuam como '@types'. */
+    // "types": [],                                      /* Define pacotes de tipos incluídos sem referência explícita. */
+    // "allowUmdGlobalAccess": true,                     /* Permite acesso a globais UMD dentro de módulos. */
+    // "moduleSuffixes": [],                             /* Lista sufixos de arquivos para busca ao resolver módulos. */
+    // "allowImportingTsExtensions": true,               /* Permite imports com extensão .ts (requer configurações adicionais). */
+    // "rewriteRelativeImportExtensions": true,          /* Reescreve extensões .ts/.tsx/.mts/.cts para JavaScript no output. */
+    // "resolvePackageJsonExports": true,                /* Usa o campo 'exports' do package.json ao resolver imports. */
+    // "resolvePackageJsonImports": true,                /* Usa o campo 'imports' do package.json ao resolver imports. */
+    // "customConditions": [],                           /* Define condições extras para o resolvedor de módulos. */
+    // "noUncheckedSideEffectImports": true,             /* Verifica imports com efeitos colaterais. */
+    // "resolveJsonModule": true,                        /* Habilita importação de arquivos .json. */
+    // "allowArbitraryExtensions": true,                 /* Permite importar arquivos com qualquer extensão (com declaração). */
+    // "noResolve": true,                                /* Impede que imports/requires aumentem o número de arquivos do projeto. */
+
+    /* Suporte a JavaScript */
+    // "allowJs": true,                                  /* Permite arquivos JavaScript no projeto. */
+    // "checkJs": true,                                  /* Habilita verificação de tipos em arquivos JavaScript. */
+    // "maxNodeModuleJsDepth": 1,                        /* Define a profundidade máxima ao verificar JS dentro de node_modules. */
+
+    /* Emissão (Build) */
+    // "declaration": true,                              /* Gera arquivos .d.ts a partir do TypeScript. */
+    // "declarationMap": true,                           /* Cria sourcemaps para arquivos .d.ts. */
+    // "emitDeclarationOnly": true,                      /* Emite apenas arquivos .d.ts, sem gerar JavaScript. */
+    // "sourceMap": true,                                /* Cria sourcemaps para arquivos JavaScript gerados. */
+    // "inlineSourceMap": true,                          /* Inclui sourcemaps dentro do JavaScript emitido. */
+    // "noEmit": true,                                   /* Impede a geração de arquivos de saída. */
+    // "outFile": "./",                                  /* Agrupa toda a saída em um único arquivo JavaScript. */
+    // "outDir": "./",                                   /* Define a pasta de saída dos arquivos compilados. */
+    // "removeComments": true,                           /* Remove comentários do output. */
+    // "importHelpers": true,                            /* Importa helpers do tslib em vez de incluí-los por arquivo. */
+    // "downlevelIteration": true,                       /* Emite iteração mais compatível, porém mais verbosa. */
+    // "sourceRoot": "",                                 /* Define o caminho raiz para debuggers encontrarem o código-fonte. */
+    // "mapRoot": "",                                    /* Define onde os mapas de depuração serão armazenados. */
+    // "inlineSources": true,                            /* Inclui o código-fonte dentro dos sourcemaps. */
+    // "emitBOM": true,                                  /* Emite BOM UTF-8 no início dos arquivos. */
+    // "newLine": "crlf",                                /* Define o tipo de quebra de linha nos arquivos emitidos. */
+    // "stripInternal": true,                            /* Remove declarações marcadas como '@internal'. */
+    // "noEmitHelpers": true,                            /* Não gera helpers como '__extends' no output. */
+    // "noEmitOnError": true,                            /* Impede a emissão se houver erros de tipagem. */
+    // "preserveConstEnums": true,                       /* Mantém enums const no código gerado. */
+    // "declarationDir": "./",                           /* Define o diretório de saída dos arquivos .d.ts. */
+
+    /* Interoperabilidade */
+    // "isolatedModules": true,                          /* Garante que cada arquivo possa ser transpilado isoladamente. */
+    // "verbatimModuleSyntax": true,                     /* Não transforma imports/exports, respeitando o formato do módulo. */
+    // "isolatedDeclarations": true,                     /* Exige anotações suficientes para gerar arquivos de declaração. */
+    // "allowSyntheticDefaultImports": true,             /* Permite 'import x from y' quando o módulo não tem export default. */
+    "esModuleInterop": true,                             /* Emite código extra para facilitar imports CommonJS. */
+    // "preserveSymlinks": true,                         /* Não resolve symlinks para seus caminhos reais. */
+    "forceConsistentCasingInFileNames": true,            /* Garante consistência de maiúsculas/minúsculas nos imports. */
+
+    /* Verificação de Tipos */
+    "strict": true,                                      /* Ativa todas as opções rigorosas de checagem de tipos. */
+    // "noImplicitAny": true,                            /* Reporta erros quando o tipo 'any' é inferido implicitamente. */
+    // "strictNullChecks": true,                         /* Considera null e undefined na verificação de tipos. */
+    // "strictFunctionTypes": true,                      /* Verifica compatibilidade de parâmetros e retornos de funções. */
+    // "strictBindCallApply": true,                      /* Verifica argumentos de bind/call/apply. */
+    // "strictPropertyInitialization": true,             /* Exige inicialização de propriedades de classe no construtor. */
+    // "strictBuiltinIteratorReturn": true,              /* Define retorno de iteradores como 'undefined' em vez de 'any'. */
+    // "noImplicitThis": true,                           /* Reporta erros quando 'this' tem tipo implícito 'any'. */
+    // "useUnknownInCatchVariables": true,               /* Define variáveis de catch como 'unknown' em vez de 'any'. */
+    // "alwaysStrict": true,                             /* Garante emissão de 'use strict'. */
+    // "noUnusedLocals": true,                           /* Reporta variáveis locais não utilizadas. */
+    // "noUnusedParameters": true,                       /* Reporta parâmetros não utilizados. */
+    // "exactOptionalPropertyTypes": true,               /* Trata propriedades opcionais exatamente como escritas. */
+    // "noImplicitReturns": true,                        /* Reporta caminhos sem retorno explícito. */
+    // "noFallthroughCasesInSwitch": true,               /* Reporta fallthrough em switch. */
+    // "noUncheckedIndexedAccess": true,                 /* Adiciona 'undefined' ao acessar índices. */
+    // "noImplicitOverride": true,                       /* Exige 'override' ao sobrescrever membros. */
+    // "noPropertyAccessFromIndexSignature": true,       /* Força uso de acesso por índice. */
+    // "allowUnusedLabels": true,                        /* Desativa erro para labels não usadas. */
+    // "allowUnreachableCode": true,                     /* Desativa erro para código inalcançável. */
+
+    /* Completude */
+    // "skipDefaultLibCheck": true,                      /* Ignora checagem de tipos em arquivos .d.ts padrão. */
+    "skipLibCheck": true                                 /* Ignora checagem de tipos em todos os arquivos .d.ts. */
+  }
+}
