@@ -1,11 +1,3 @@
-# Projeto Conta Bancária - TypeScript & POO
-
-## Simulador Educacional de Sistema Bancário | Portfólio Profissional
-
-<br />
-
-modelo_readme_cb_type.md
-7 KB
 # Bootcamp JavaScript Full Stack - Generation Brasil
 
 <br />
@@ -13,9 +5,6 @@ modelo_readme_cb_type.md
 <div align="center">
 	<img src="https://i.imgur.com/izFuHID.png" title="source: imgur.com" width="35%"/>
 
-modelo_readme_b1_type.md
-5 KB
-﻿
 # Projeto Conta Bancária - TypeScript & POO
 
 ## Simulador Educacional de Sistema Bancário | Portfólio Profissional
