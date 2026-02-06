@@ -1,13 +1,15 @@
 import { colors } from '../util/Colors';
 
-export class Conta{
+export abstract class Conta{
     
+    // Atributos da Classe
     private _numero: number;
     private _agencia: number;
     private _titular: string;
     private _tipo: number;
     private _saldo: number;
 
+    // Método Constructor
 	constructor(numero: number, agencia: number, titular: string, tipo: number, saldo: number) {
 		this._numero = numero;
 		this._agencia = agencia;
@@ -16,6 +18,7 @@ export class Conta{
 		this._saldo = saldo;
 	}
 
+    // Métodos Get e Set
 	public get numero(): number {
 		return this._numero;
 	}
@@ -65,16 +68,27 @@ export class Conta{
 		this._saldo = value;
 	}
 
+    // Metodos auxiliares
+
+    
     public sacar(valor: number): boolean {
         if(valor <= 0){
-            console.log(colors.fg.red, "O valor deve ser positivo", colors.reset);
-        return false;
+            console.log(
+                colors.fg.red, 
+                "O valor deve ser positivo", 
+                colors.reset,
+            )
+        return false
 }
         if(valor > this._saldo){
-            console.log(colors.fg.red, "Saldo Insuficiente!", colors.reset);
-            return false;
+            console.log(
+                colors.fg.red, 
+                'Saldo Insuficiente!', 
+                colors.reset,
+            )
+            return false
         }
-                this._saldo -= valor;
+                this.saldo -= valor;
                 return true;
         
     }
@@ -99,7 +113,7 @@ export class Conta{
                 tipo = "Conta Corrente";
             break;
             case 2:
-                tipo = "Conta Poupança"
+                tipo = "Conta Poupança";
             break;
             default:
                 tipo = "Tipo Inválido!";
