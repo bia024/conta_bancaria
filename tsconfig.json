@@ -32,7 +32,7 @@
     // "paths": {},                                      /* Define atalhos para remapeamento de imports. */
     // "rootDirs": [],                                   /* Permite tratar múltiplas pastas como uma só ao resolver módulos. */
     // "typeRoots": [],                                  /* Define pastas que atuam como '@types'. */
-    // "types": [],                                      /* Define pacotes de tipos incluídos sem referência explícita. */
+    "types": ["node"],                                      /* Define pacotes de tipos incluídos sem referência explícita. */
     // "allowUmdGlobalAccess": true,                     /* Permite acesso a globais UMD dentro de módulos. */
     // "moduleSuffixes": [],                             /* Lista sufixos de arquivos para busca ao resolver módulos. */
     // "allowImportingTsExtensions": true,               /* Permite imports com extensão .ts (requer configurações adicionais). */
@@ -108,4 +108,5 @@
     // "skipDefaultLibCheck": true,                      /* Ignora checagem de tipos em arquivos .d.ts padrão. */
     "skipLibCheck": true                                 /* Ignora checagem de tipos em todos os arquivos .d.ts. */
   }
+  
 }

@@ -1,101 +1,52 @@
-import leia from "readline-sync";
-import { colors } from './src/util/Colors';
-import { Conta } from "./src/model/Conta";
-import { Input } from "./src/util/Input";
-import { ContaCorrente } from "./src/model/ContaCorrente";
+import { ContaController } from './src/controller/ContaController';
+import { ContaCorrente } from './src/model/ContaCorrente';
 import { ContaPoupanca } from './src/model/ContaPoupanca';
+import { colors } from './src/util/Colors';
+import { formatarMoeda } from './src/util/Currency';
+import { Input } from "./src/util/Input";
+
+// Cria um Objeto Global da Classe ContaController
+const contas = new ContaController();
+
+// Cria um array contendo os tipos de conta
+const tipoContas = ["Conta Corrente", "Conta Poupanca"];
+
 export function main() {
 
     let opcao: number;
-    
-    // const c1 = new Conta (1, 1234, "Sofia", 1, 100000.00);
 
-    // c1.visualizar();
-    
-    // console.log("Sacar 100,00: ", c1.sacar(100.00));
-    // console.log("Sacar 200000,00: ", c1.sacar(200000.00));
-    // console.log("Sacar 0,00: ", c1.sacar(0.00));
+    // Cria contas de teste para validar a aplicação
+    criarContasTeste();
 
-    // console.log("Depositar -10,00: ");
-    // c1.depositar(-10.00);
+    while (true) {
 
-    // console.log("Depositar 500,00: ");
-    // c1.depositar(500.00);
+        console.log(colors.bg.black, colors.fg.yellow, 
+                    "*****************************************************");
+        console.log("                                                     ");
+        console.log("                BANCO DO BRAZIL COM Z                ");
+        console.log("                                                     ");
+        console.log("*****************************************************");
+        console.log("                                                     ");
+        console.log("            1 - Criar Conta                          ");
+        console.log("            2 - Listar todas as Contas               ");
+        console.log("            3 - Buscar Conta por Numero              ");
+        console.log("            4 - Atualizar Dados da Conta             ");
+        console.log("            5 - Apagar Conta                         ");
+        console.log("            6 - Sacar                                ");
+        console.log("            7 - Depositar                            ");
+        console.log("            8 - Transferir valores entre Contas      ");
+        console.log("            0 - Sair                                 ");
+        console.log("                                                     ");
+        console.log("*****************************************************");
+        console.log("                                                     ", 
+        colors.reset);
 
-    // // estamos simulando um sistema administrado por um Gerente. Não estou me atendo a todos os sistemas bancários.
-    // c1.visualizar();
+        console.log("Entre com a opção desejada:");
+        // CORREÇÃO: Adicionado segundo argumento
+        opcao = Input.questionInt("", { defaultInput: 0 });
 
-
-    // Testes da Classe Conta Corrente
-    // aqui peenchemos todos os dados
-    const cc1 = new ContaCorrente(1, 5678, "Bianca", 1, 200000.00, 2000.00);
-
-    cc1.visualizar();
-
-    const cp1 = new ContaPoupanca(2, 1234, "Beatriz", 2, 2000.00, 12);
-
-    // Testes do Método Sacar - Conta Corrente
-    console.log("Sacar 100,00: ", cc1.sacar(1000.00));
-    console.log("Sacar 200000,00: ", cc1.sacar(200000.00));
-    console.log("Sacar R$50000.00", cp1.sacar(500.00));
-    // Testes do Método Depositar - Conta Corrente
-    cc1.depositar(500);
-
-    cp1.visualizar();
-
-    // OUTRAS FORMAS DE VISUALIZAR...:
-    // cc1.agencia = 1234; // exemplo mostrado pelo professor <-
-    // c1.visualizar();
-    // console.log(cc1.agencia);
-
-    // Faremos o diagrama de aniversário (atributo number)
-
-    // criar uma classe investimento de acordo com o invest da pessoa, conta salario, conta INSS (nao tem opção de deposito , por ser conta temporaria . e ai ela transfere rpa corrente pra poder movimentar)
-    console.log("\nTestes - Classe Conta Poupança");
-
-    console.log("\nSacar 1000.00");
-    console.log("\n", cp1.sacar(1000.00));
-
-    console.log("\nSacar 2100.00");
-    console.log("\n", cp1.sacar(2100.00));
-
-    console.log("\nDepositar 500.00");
-    cp1.depositar(500.00);
-
-    console.log("\n");
-
-    const menu = `
-${"*".repeat(50)}
-${" ".repeat(50)}
-                BANCO DO BRAZIL COM Z                            
-${" ".repeat(50)}
-${"*".repeat(50)}
-${" ".repeat(50)}
-                1 - Criar Conta                                      
-                2 - Listar todas as Contas                           
-                3 - Buscar Conta por Numero                          
-                4 - Atualizar Dados da Conta                         
-                5 - Apagar Conta                                     
-                6 - Sacar                                            
-                7 - Depositar                                        
-                8 - Transferir valores entre Contas                  
-                9 - Sair                                             
-${" ".repeat(50)}
-${"*".repeat(50)}
-`;
-
-    do {
-        console.log(colors.bg.black, colors.fg.yellow);
-        console.log(menu);
-        console.log(colors.reset);
-
-        opcao = leia.questionInt("Entre com a opcao desejada: ");
-
-        // opcao = leia.questionInt(colors.fg.matrixGreenStrong + "Entre com a opcao desejada: ");
-        
-        if (opcao === 9) {
-            console.log(colors.fg.greenstrong,
-                "\nBanco do Brazil com Z - O seu Futuro começa aqui!");
+        if (opcao === 0) {
+            console.log(colors.fg.greenstrong, "\nBanco do Brazil com Z - O seu Futuro começa aqui!");
             sobre();
             console.log(colors.reset, "");
             process.exit(0);
@@ -103,64 +54,173 @@ ${"*".repeat(50)}
 
         switch (opcao) {
             case 1:
-                console.log(colors.fg.whitestrong, "\nCriar Conta\n", colors.reset);
-
-                console.log("Digite um texto com acentos: ");
-                let teste = Input.question("");
-                console.log(teste);
-
-                keyPress();
+                console.log(colors.fg.whitestrong, "\n\nCriar Conta\n\n", colors.reset);
+                criarConta();
+                keyPress()
                 break;
             case 2:
-                console.log(colors.fg.whitestrong, "\nListar todas as Contas\n", colors.reset);
-                keyPress();
+                console.log(colors.fg.whitestrong, "\n\nListar todas as Contas\n\n", colors.reset);
+                listarTodasContas();
+                keyPress()
                 break;
             case 3:
-                console.log(colors.fg.whitestrong, "\nConsultar dados da Conta por Número\n", colors.reset);
-                keyPress();
+                console.log(colors.fg.whitestrong, "\n\nConsultar dados da Conta - por número\n\n", colors.reset);
+                buscarContaPorNumero();
+                keyPress()
                 break;
             case 4:
-                console.log(colors.fg.whitestrong, "\nAtualizar dados da Conta\n", colors.reset);
-                keyPress();
+                console.log(colors.fg.whitestrong, "\n\nAtualizar dados da Conta\n\n", colors.reset);
+                atualizarConta();
+                keyPress()
                 break;
             case 5:
-                console.log(colors.fg.whitestrong, "\nApagar uma Conta\n", colors.reset);
-                keyPress();
+                console.log(colors.fg.whitestrong, "\n\nApagar uma Conta\n\n", colors.reset);
+                deletarContaPorNumero();
+                keyPress()
                 break;
             case 6:
-                console.log(colors.fg.whitestrong, "\nSacar\n", colors.reset);
-                keyPress();
+                console.log(colors.fg.whitestrong, "\n\nSaque\n\n", colors.reset);
+                keyPress()
                 break;
             case 7:
-                console.log(colors.fg.whitestrong, "\nDepositar\n", colors.reset);
-                keyPress();
+                console.log(colors.fg.whitestrong, "\n\nDepósito\n\n", colors.reset);
+                keyPress()
                 break;
             case 8:
-                console.log(colors.fg.whitestrong, "\nTransferência entre Contas\n", colors.reset);
-                keyPress();
-                break;
-            case 9:
+                console.log(colors.fg.whitestrong, "\n\nTransferência entre Contas\n\n", colors.reset);
+                keyPress()
                 break;
             default:
                 console.log(colors.fg.whitestrong, "\nOpção Inválida!\n", colors.reset);
-                keyPress();
-                break;
+                keyPress()
         }
-
-    } while (opcao !== 9);
+    }
 }
 
-export function sobre(): void {
-    console.log("\n" + "*".repeat(70));
-    console.log("Projeto Desenvolvido por: Bianca Caetano dos Reis - beahreis4@gmail.com");
-    console.log("https://github.com/bia024 - https://www.linkedin.com/in/bia-caetano/");
-    console.log("*".repeat(70));
+function criarConta(){
+    console.log("Digite o número da Agência: ")
+    const agencia = Input.questionInt("", { defaultInput: 0 });
+
+    console.log("Digite o nome do Titular: ")
+    const titular = Input.question("", { defaultInput: "" });
+
+    console.log("Selecione o tipo da Conta: ")
+    const tipo = Input.keyInSelect(tipoContas, "", { cancel: false}) + 1;
+
+    console.log("Digite o saldo da Conta: ")
+    const saldo = Input.questionFloat("", { defaultInput: 0 });
+
+    switch(tipo){
+        case 1: 
+            console.log("Digite o limite da conta: ");
+            const limite = Input.questionFloat("", { defaultInput: 0 });
+            contas.cadastrar(new ContaCorrente(
+                contas.gerarNumero(), agencia, titular, tipo, saldo, limite));
+        break;
+
+        case 2: 
+            console.log("Digite o dia do aniversário da conta: ");
+            const aniversario = Input.questionInt("", { defaultInput: 0 });
+            contas.cadastrar(new ContaPoupanca(
+                contas.gerarNumero(), agencia, titular, tipo, saldo, aniversario));
+        break;
+    }
+}
+
+function listarTodasContas(): void{
+    contas.listarTodas();
+}
+
+function buscarContaPorNumero(): void{
+    console.log("Digite o número da conta: ");
+    const numero = Input.questionInt("", { defaultInput: 0 });
+    contas.procurarPorNumero(numero);
+}
+
+function atualizarConta(): void{
+    console.log("Digite o número da conta: ");
+    const numero = Input.questionInt("", { defaultInput: 0 });
+
+    const conta = contas.buscarNoArray(numero);
+
+    if (conta !== null && conta !== undefined) {
+        let agencia: number = conta.agencia;
+        let titular: string = conta.titular;
+        const tipo: number = conta.tipo;
+        let saldo: number = conta.saldo;
+
+        console.log(`\nAgência atual: ${agencia}`);
+        console.log("Digite o novo número da agência: ");
+        agencia = Input.questionInt("", { defaultInput: agencia });
+
+        console.log(`\nTitular atual: ${titular}`);
+        console.log("Digite o novo nome do titular: ");
+        titular = Input.question("", { defaultInput: titular });
+
+        console.log(`\nSaldo atual: ${formatarMoeda(saldo)}`);
+        console.log("Digite o valor do novo saldo: ");
+        saldo = Input.questionFloat("", { defaultInput: saldo });
+
+        switch(tipo){
+            case 1: 
+                let limite: number = (conta as ContaCorrente).limite;
+                console.log(`\nLimite atual: ${formatarMoeda(limite)}`);
+                console.log("Digite o valor do novo limite: ");
+                limite = Input.questionFloat("", { defaultInput: limite });
+                contas.atualizar(new ContaCorrente(numero, agencia, titular, tipo, saldo, limite));
+            break;
+
+            case 2: 
+                let aniversario: number = (conta as ContaPoupanca).aniversario;
+                console.log(`\nAniversário Atual: ${aniversario}`);
+                console.log("Digite o novo dia do aniversário: ");
+                aniversario = Input.questionInt("", { defaultInput: aniversario });
+                contas.atualizar(new ContaPoupanca(numero, agencia, titular, tipo, saldo, aniversario));
+            break;
+        }
+    } else {
+        console.log(colors.fg.red, `A conta número ${numero} não foi encontrada!`, colors.reset);
+    }
+}
+
+function deletarContaPorNumero(): void{
+    console.log("Digite o número da conta: ");
+    const numero = Input.questionInt("", { defaultInput: 0 });
+    
+    const conta = contas.buscarNoArray(numero);
+
+    if(conta !== null && conta !== undefined){
+        console.log(colors.fg.whitestrong, 
+            `\nTem certeza que deseja deletar a conta número ${numero} [y/n]?`, colors.reset);
+        const confirma = Input.keyInYNStrict("");
+
+        if (confirma)
+            contas.deletar(numero);
+        else
+            console.log(colors.fg.red,"\nOperação cancelada!", colors.reset);
+    } else {
+        console.log(colors.fg.red, `A conta número ${numero} não foi encontrada!`, colors.reset);
+    }
+}
+
+function sobre(): void {
+    console.log("\n*****************************************************");
+    console.log("Projeto Desenvolvido por: ");
+    console.log("Bianca Caetano - bianca@email.com");
+    console.log("github.com/bia024");
+    console.log("*****************************************************");
 }
 
 function keyPress(): void {
-    console.log(colors.reset, "");
-    console.log("\nPressione enter para continuar...");
+    console.log(colors.reset,"\nPressione enter para continuar...");
     Input.prompt();
+}
+
+function criarContasTeste(): void{
+    contas.cadastrar(new ContaCorrente(contas.gerarNumero(), 1234, 'Amanda Magro', 1, 1000000.00, 100000.00));
+    contas.cadastrar(new ContaCorrente(contas.gerarNumero(), 4578, 'João da Silva', 1,  1000.00, 100.00));
+    contas.cadastrar(new ContaPoupanca(contas.gerarNumero(), 5789, "Geana Almeida", 2, 10000, 10));
+    contas.cadastrar(new ContaPoupanca(contas.gerarNumero(), 5698, "Jean Lima", 2, 15000, 15));
 }
 
 main();
