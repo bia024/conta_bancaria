@@ -12,11 +12,6 @@
 <br />
 
 <div align="center">
-	<img src="https://i.imgur.com/izFuHID.png" title="source: imgur.com" width="35%"/>
-</div>
-<br />
-
-<div align="center">
   <img src="https://img.shields.io/github/languages/top/bia024/conta_bancaria?style=flat-square" />
   <img src="https://img.shields.io/github/repo-size/bia024/conta_bancaria?style=flat-square" />
   <img src="https://img.shields.io/github/languages/count/bia024/conta_bancaria?style=flat-square" />
