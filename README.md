@@ -2,9 +2,6 @@
 
 <br />
 
-<div align="center">
-	<img src="https://i.imgur.com/izFuHID.png" title="source: imgur.com" width="35%"/>
-
 # Projeto Conta Bancária - TypeScript & POO
 
 ## Simulador Educacional de Sistema Bancário | Portfólio Profissional
