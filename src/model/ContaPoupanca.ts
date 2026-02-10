@@ -2,8 +2,10 @@ import { Conta } from './Conta';
 
 export class ContaPoupanca extends Conta {
     
+	// Atributos específicos de Conta Poupança
 	private _aniversario: number
 
+	// Construtor com a chamada para a Super Classe
 	constructor(
 		numero: number,
 		agencia: number,
@@ -12,10 +14,11 @@ export class ContaPoupanca extends Conta {
 		saldo: number,
 		aniversario: number,
 	) {
-		super(numero, agencia, titular, tipo, saldo); 
+		super(numero, agencia, titular, tipo, saldo); // Chama o Construtor da Super Classe
 		this._aniversario = aniversario;
 	}
 
+	// Métodos GET e SET específicos da Classe Conta Poupanca
 	public get aniversario(): number {
 		return this._aniversario
 	}

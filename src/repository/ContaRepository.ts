@@ -8,7 +8,8 @@ export interface ContaRepository{
     cadastrar(conta: Conta): void;// Para fazer um cadastro, preciso criar um objeto. Esse Método tem uma peculiaridade
     atualizar(conta: Conta): void;
     deletar(numero: number): void;
-
+    procurarPorTutular(titular: string): void;
+        
     // Passo 2: Definir os Métodos Bancários 
     sacar(numero: number, valor: number): void;
     depositar(numero: number, valor: number): void;

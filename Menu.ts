@@ -35,6 +35,7 @@ export function main() {
         console.log("            6 - Sacar                                ");
         console.log("            7 - Depositar                            ");
         console.log("            8 - Transferir valores entre Contas      ");
+        console.log("            9 - Buscar Conta por Nome do titular     ");
         console.log("            0 - Sair                                 ");
         console.log("                                                     ");
         console.log("*****************************************************");
@@ -80,14 +81,22 @@ export function main() {
                 break;
             case 6:
                 console.log(colors.fg.whitestrong, "\n\nSaque\n\n", colors.reset);
+                sacar();
                 keyPress()
                 break;
             case 7:
                 console.log(colors.fg.whitestrong, "\n\nDepósito\n\n", colors.reset);
+                depositar();
                 keyPress()
                 break;
             case 8:
                 console.log(colors.fg.whitestrong, "\n\nTransferência entre Contas\n\n", colors.reset);
+                transferir();
+                keyPress()
+                break;
+            case 9:
+                console.log(colors.fg.whitestrong, "\n\nProcurar Conta por Nome do Titular\n\n", colors.reset);
+               procurarNomePorTitular();
                 keyPress()
                 break;
             default:
@@ -153,13 +162,17 @@ function atualizarConta(): void{
         console.log("Digite o novo número da agência: ");
         agencia = Input.questionInt("", { defaultInput: agencia });
 
+        //  Atualização do Titular
         console.log(`\nTitular atual: ${titular}`);
         console.log("Digite o novo nome do titular: ");
+        // console.log(Pressione o Menu)
         titular = Input.question("", { defaultInput: titular });
 
+        // Atualização do saldo
         console.log(`\nSaldo atual: ${formatarMoeda(saldo)}`);
         console.log("Digite o valor do novo saldo: ");
         saldo = Input.questionFloat("", { defaultInput: saldo });
+
 
         switch(tipo){
             case 1: 
@@ -203,10 +216,75 @@ function deletarContaPorNumero(): void{
     }
 }
 
+function sacar(): void{
+
+    console.log("Digite o número da conta: ");
+    const numero = Input.questionInt("");
+    
+    const conta = contas.buscarNoArray(numero);
+
+    // se a conta existir...
+    if(conta !== null){
+       console.log("Digite o valor do saque: ");
+        const valor = Input.questionFloat("");
+        contas.sacar(numero, valor);    
+    }else
+            console.log(colors.fg.red,"\nOperação cancelada!", colors.reset);
+}
+
+
+function depositar(): void{
+    console.log("Digite o número da conta: ");
+    const numero = Input.questionInt("");
+    
+    const conta = contas.buscarNoArray(numero);
+
+    // se a conta existir...
+    if(conta !== null){
+       console.log("Digite o valor do depósito: ");
+        const valor = Input.questionFloat("");
+
+        contas.depositar(numero, valor);    
+    }else
+            console.log(colors.fg.red,`A conta número ${numero} não foi encontrada!`, colors.reset);
+
+}
+
+function transferir(): void{
+    console.log("Digite o número da conta de Origem: ");
+    const numeroOrigem = Input.questionInt("");
+    
+    console.log("Digite o número da conta de Destino: ");
+    const numeroDestino = Input.questionInt("");
+
+    const contaOrigem = contas.buscarNoArray(numeroOrigem);
+    const contaDestino = contas.buscarNoArray(numeroDestino);
+
+    if (contaOrigem === null) {
+        console.log(colors.fg.red, `A conta de Origem ${numeroOrigem} ão foi encontrada!`, colors.reset);
+     }else if(contaDestino === null){
+        console.log(colors.fg.red, `A conta de Destino ${numeroDestino} não foi encontrada!`, colors.reset);
+      } else {
+        console.log("Digite o valor da Transferência: ");
+        const valor = Input.questionFloat("");
+        contas.transferir(numeroOrigem, numeroDestino, valor);
+    }
+}
+
+function procurarNomePorTitular(): void{
+    
+    // solicita o nome do titular
+    console.log("Digite o Nome do Titular: ");
+
+    // localiza a conta a partir do nome do titular
+    const titular = Input.question("");
+    contas.procurarPorTutular(titular);
+
+}
 function sobre(): void {
     console.log("\n*****************************************************");
     console.log("Projeto Desenvolvido por: ");
-    console.log("Bianca Caetano - bianca@email.com");
+    console.log("Bianca Caetano - beahreis4@gmail.com");
     console.log("github.com/bia024");
     console.log("*****************************************************");
 }
